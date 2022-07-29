@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>marble_index</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>이모저모티콘</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -15,15 +14,16 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 style="background-color: paleturquoise;">Test Application - Hyperledger Fabric - 이모저모티콘 Ex.</h1>
-        <h3>hello. choose your action.</h3>
+    <div class="container" style = "text-align: center;">
+        <h1>이모티콘 모두, 저작권 모두, 이모저모티콘</h1>
+        <h3>choose your action.</h3>
 
         <button id="btn_create" class="btn btn-primary">이모티콘 생성하기</button>
-        <button id="btn_read" class="btn btn-success">이모티콘 정보조회하기</button>
-        <button id="btn_transfer" class="btn btn-danger">이모티콘 기여하기</button>
+        <button id="btn_read" class="btn btn-secondary">이모티콘 정보조회하기</button>
+        <button id="btn_transfer" class="btn btn-info">이모티콘 기여하기</button>
         <button id="btn_like" class="btn btn-success">이모티콘 좋아요 누르기</button>
-        <table id="block-num-table" class="table table-sm"></table>
+        <p id="network_link"></p>
+
     </div>
 </body>
 <script>
@@ -48,22 +48,10 @@
         });
     });
     if (navigator.onLine == true){ 
-        document.write("네트워크 연결 상태 : 정상");
+        document.getElementById("network_link").innerHTML="네트워크 연결 상태 : 정상";
     }else{
-        document.write("네트워크 연결 상태 : 끊어짐");
+        document.getElementById("network_link").innerHTML="네트워크 연결 상태 : 끊어짐";
     }
-    $.get('/emo/blockNumber', function(data){
-            
-            if(data.result == 'success'){
-                $('#block-num-table').empty();
-                $('#block-num-table').append("블록개수 : "+data.message.index+1+"<br>");
-            }else{
-                $('#block-num-table').empty();
-                $('#block-num-table').append("블록개수 :  <br>");
-                console.log('블록개수 불러오는데 실패함.');
-            }
-        });
-
 </script>
 
 </html>
